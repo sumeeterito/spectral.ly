@@ -1,0 +1,93 @@
+<html><head>
+                                <meta charset="utf-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1">
+                                <title>Snippet - Bootsnipp.com</title>
+                                <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+                                <style>@import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
+.container { margin-top: 20px; }
+.mb20 { margin-bottom: 20px; } 
+
+hgroup { padding-left: 15px; border-bottom: 1px solid #ccc; }
+hgroup h1 { font: 500 normal 1.625em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin-top: 0; line-height: 1.15; }
+hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin: 0; padding-bottom: 10px; }
+
+.search-result .thumbnail { border-radius: 0 !important; }
+.search-result:first-child { margin-top: 0 !important; }
+.search-result { margin-top: 50px; }
+.search-result .bordered { border-right: 1px dotted #ccc; height: 140px; }
+.search-result ul { padding-left: 0 !important; list-style: none;  }
+.search-result ul li { font: 400 normal .85em "Roboto",Arial,Verdana,sans-serif;  line-height: 30px; }
+.search-result ul li i { padding-right: 5px; }
+.search-result .col-md-7 { position: relative; }
+.search-result h3 { font: 500 normal 1.375em "Roboto",Arial,Verdana,sans-serif; margin-top: 0 !important; margin-bottom: 10px !important; }
+.search-result h3 > a, .search-result i { color: #248dc1 !important; }
+.search-result p { font: normal normal 1.3em "Roboto",Arial,Verdana,sans-serif; line-height: 150%} 
+.search-result span.plus { position: absolute; right: 0; top: 126px; }
+.search-result span.plus a { background-color: #248dc1; padding: 5px 5px 3px 5px; }
+.search-result span.plus a:hover { background-color: #414141; }
+.search-result span.plus a i { color: #fff !important; }
+.search-result span.border { display: block; width: 97%; margin: 0 15px; border-bottom: 1px dotted #ccc; }
+
+
+</style>
+                                <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+                                <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+                                <script type="text/javascript"></script>
+                            </head>
+                            <body>
+<div class="container">
+<div class = "row-body">
+<div class="col-xs-12 col-sm-12 col-md-9">
+    <hgroup class="mb20">
+		<h1>Search Results</h1>
+		<h2 class="lead"><strong class="text-danger">3</strong> results were found for the search for <strong class="text-danger">Lorem</strong></h2>								
+	</hgroup>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-3">
+	<form action="/search" method="POST">
+    <select name="myselect" id="myselect" onchange="this.form.submit()">
+        <option value="1">Most-To-Least Biased</option>
+        <option value="2">Least-To-Most Biased</option>
+    </select>
+	</form>
+	</div>
+</div>
+    <section class="col-xs-12 col-sm-6 col-md-12">
+    {% for rank, meta in data.items() %}
+    <article class="search-result row">
+			<div class="col-xs-12 col-sm-12 col-md-3 bordered">
+				<a href="{{ meta['link'] }}" title="Lorem ipsum" class="thumbnail"><img src="{{ meta['image'] }}" alt="Lorem ipsum"/></a>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-9">
+                <div class = "row-body">
+                	<div class="col-xs-12 col-sm-12 col-md-12">
+				    	<h3><a href="{{ meta['link'] }}" title=""><strong>{{ meta['title'] }}</strong></a></h3>
+				    	<p>{{ meta['snippet'] }}...</p>
+				    </div>
+                </div>
+                <div class = "row-body">
+                    <div class="col-xs-12 col-sm-12 col-md-3"><p style='line-height: 100%'>Bias Rank: {{ rank }}</p></div>
+                    <div class="col-xs-12 col-sm-12 col-md-3"><p style='line-height: 100%'><!-- {{ meta['prediction'] }} --></p></div>
+                    <div class="col-xs-12 col-sm-12 col-md-3"><p style='line-height: 100%'>{{ meta['outlet'] }}</p></div>
+                    <div class="col-xs-12 col-sm-12 col-md-3"><p style='line-height: 100%'>{{ meta['published'] }}</p></div>
+                </div>
+			</div>
+			<span class="clearfix borda"></span>
+		</article>
+
+	{% endfor %}
+	</section>
+<div class="row text-center">
+    <div class="col-lg-12">
+        <ul class="pagination">
+            {{ pagination.links }}
+        </ul>
+    </div>
+</div>
+</div>	
+                            
+                        </body></html>
+
+

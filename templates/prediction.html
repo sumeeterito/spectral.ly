@@ -1,0 +1,17 @@
+<table>
+  <thead>
+    <th>Email</th>
+    <th>Prediction</th>
+    <th>Risk Assessment</th>
+  </thead>
+  <tbody>
+      {% for x, y, z in data %}
+      <tr>
+        <td>{{ x }}</td>
+        <td>{{ y }}</td>
+        <td>{{ z }}</td>
+      </tr>
+      {% endfor %}
+      
+  </tbody>
+</table>
