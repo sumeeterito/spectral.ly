@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 from flask.ext.paginate import Pagination
 
 app = Flask(__name__)
+
 PORT = 5353
 
 
@@ -42,17 +43,18 @@ def search_results(url):
 
     score = BiasScoring(url)
     score.parallelize_articlize()
+    
+    ''' Liberal/Conservative analysis currently unavailable on github:
+
     predict = Predict()
+    pred, articles = predict.featurize_predict(score.articles)
+    i=0
+    for k, v in score.article_rank.items():
+        score.article_rank[k]['prediction'] = pred[i]
+        print score.article_rank[k]['prediction']
+        i+=1
 
-    # pred, articles = predict.featurize_predict(score.articles)
-
-    # i=0
-
-    # for k, v in score.article_rank.items():
-    #     score.article_rank[k]['prediction'] = pred[i]
-    #     print score.article_rank[k]['prediction']
-    #     i+=1
-
+    '''
 
     page = int(request.args.get('page', 1))
 

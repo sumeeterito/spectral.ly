@@ -18,6 +18,8 @@ class Predict(object):
 
 	def predict(self, X):
 
+		''' Model currently not available on github. So the below won't work'''
+
 		with open('model.pickle', 'r') as f:
 			model = pickle.load(f)
 
